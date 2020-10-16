@@ -1,0 +1,52 @@
+openapi: 3.0.0
+info:
+  version: v2
+  title: SwaggerDemo API
+  description: Customers API to demo Swagger
+  termsOfService: None
+  contact:
+    name: Hinault Romaric
+    url: http://rdonfack.developpez.com/
+    email: hinault@monsite.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org
+paths:
+  "/api/Customers/{id}":
+    get:
+      tags:
+        - Customers
+      summary: Retourne un client spécifique à partir de son id
+      description: Je manque d'imagination
+      operationId: ApiCustomersByIdGet
+      parameters:
+        - name: id
+          in: path
+          description: id du client à retourner
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        "200":
+          description: client sélectionné
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customer"
+servers:
+  - url: /
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        eMail:
+          type: string
